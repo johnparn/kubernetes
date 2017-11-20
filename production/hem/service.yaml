@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hem-svc
+  namespace: production
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  sessionAffinity: None # None or ClientIP
+  #type: NodePort #LoadBalancer, NodePort or CLusterIP
+  selector:
+    app: hem

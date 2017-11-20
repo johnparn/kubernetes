@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hem-ingress
+  namespace: production
+  annotations:
+    #kubernetes.io/ingress.class: "nginx"
+    #ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hem-svc
+          servicePort: 80
+      - path: /spara
+        backend:
+          serviceName: spara-svc
+          servicePort: 80
+      - path: /bolan
+        backend:
+          serviceName: bolan-svc
+          servicePort: 80
+      - path: /forsakra
+        backend:
+          serviceName: forsakra-svc
+          servicePort: 80

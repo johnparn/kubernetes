@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bolan
+  namespace: production
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bolan
+    spec:
+      containers:
+      - image: localhost:5000/bolan:0.0.1
+        imagePullPolicy: Always
+        name: bolan
+        env:
+          - name: NODE_ENV
+            value: production
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
+          initialDelaySeconds: 60

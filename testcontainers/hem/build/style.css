@@ -1,0 +1,37 @@
+body {
+    background-image: url(/bg.jpg);
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: 0;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    font-family: HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,sans-serif;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+.center {
+    flex: 1;
+    height: 100vh;
+    text-transform: uppercase;
+    font-size: 10em;
+    color: rgba(204,204,204,0.7);
+    text-align: center;
+}
+.links {
+
+}
+.links ul  li {
+    display: inline-flex;
+    padding: 1em;
+}
+a {
+    color: #cccccc;
+    text-decoration: none;
+}

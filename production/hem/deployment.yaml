@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hem
+  namespace: production
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  template:
+    metadata:
+      labels:
+        app: hem
+    spec:
+      containers:
+      - image: localhost:5000/hem:0.0.5
+        imagePullPolicy: Always
+        name: hem
+        ports:
+        - containerPort: 80
+        # Check if site is responding, else restart
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
+            #httpHeaders:
+            #  - name: X-Custom-Header
+            #    value: Awesome
+          initialDelaySeconds: 5
+          periodSeconds: 30

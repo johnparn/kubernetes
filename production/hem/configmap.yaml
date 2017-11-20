@@ -1,0 +1,8 @@
+apiVersion: v1
+metadata:
+  name: hem-config
+  namespace: production
+data:
+  # modify this to specify your address
+  myvar: "env-variable-passed-to-container"
+kind: ConfigMap
